@@ -2,51 +2,9 @@
 
 This repository contains the Standard Operating Procedure (SOP) for the Network Attached Storage (NAS) system used in the Goard Lab.
 
-## 🚀 Quick Start
-
-This site is designed to be deployed on GitHub Pages. Follow these steps to get it running:
-
-### 1. Create a New Repository
-
-1. Go to [GitHub](https://github.com) and create a new repository
-2. Name it something like `nas-sop` or `lab-nas-documentation`
-3. Choose whether to make it public or private (note: GitHub Pages on private repos requires a paid account)
-4. Don't initialize with README, .gitignore, or license (we have our own files)
-
-### 2. Upload Files
-
-You can either:
-
-**Option A: Upload via Web Interface**
-1. Click "uploading an existing file" on the empty repository page
-2. Drag and drop `index.html` and `README.md`
-3. Commit the files
-
-**Option B: Use Git Command Line**
-```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
-cd YOUR-REPO-NAME
-# Copy index.html and README.md to this directory
-git add .
-git commit -m "Initial commit: Add NAS SOP documentation"
-git push origin main
+The SOP is available at:
 ```
-
-### 3. Enable GitHub Pages
-
-1. Go to your repository on GitHub
-2. Click on "Settings"
-3. Scroll down to "Pages" in the left sidebar
-4. Under "Source", select "Deploy from a branch"
-5. Select "main" branch and "/ (root)" folder
-6. Click "Save"
-7. Wait a few minutes for the site to build
-
-### 4. Access Your Site
-
-Your site will be available at:
-```
-https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/
+https://s-acosta.github.io/NAS-SOP/
 ```
 
 ## 📝 Updating the Documentation
@@ -83,9 +41,9 @@ The site uses embedded CSS for easy customization. You can modify:
 
 ## 📞 Support
 
-For questions about the NAS system or this documentation, contact Kevin.
+For questions about the NAS system or this documentation, contact Santi.
 
 ---
 
 **Original Document Written:** June 21, 2017 by KS  
-**GitHub Pages Version Created:** November 2025
+**GitHub Pages Version Created:** November 16, 2025 by SAM
