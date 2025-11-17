@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header-content {
@@ -52,7 +53,7 @@
             border-radius: 8px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .info-box {
@@ -99,7 +100,8 @@
             margin-top: 0;
         }
 
-        ul, ol {
+        ul,
+        ol {
             margin-left: 2rem;
             margin-top: 0.5rem;
             margin-bottom: 1rem;
@@ -200,21 +202,32 @@
             border: 1px solid #fbc02d;
         }
 
+        .flowchart-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5rem auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
             }
-            
+
             .container {
                 padding: 0 1rem;
             }
-            
+
             .card {
                 padding: 1.5rem;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <div class="header-content">
@@ -227,11 +240,12 @@
         <div class="card">
             <div class="metadata">
                 <strong>Written:</strong> June 21, 2017 by KS<br>
-                <strong>Last Updated:</strong> November 2025
+                <strong>Last Updated:</strong> November 16, 2025 by SAM
             </div>
 
             <div class="info-box">
-                <strong>Purpose:</strong> To provide a general understanding of the NAS backup system we use in the Goard Lab.
+                <strong>Purpose:</strong> To provide a general understanding of the NAS backup system we use in the
+                Goard Lab.
             </div>
 
             <div class="toc">
@@ -240,6 +254,7 @@
                     <li><a href="#what-is-nas">What is a NAS?</a></li>
                     <li><a href="#flowchart">NAS Flowchart</a></li>
                     <li><a href="#typical-workflow">Example Typical Data Flow</a></li>
+                    <li><a href="#Naming Conventions">Naming Conventions</a></li>
                     <li><a href="#faqs">NAS FAQs</a></li>
                     <li><a href="#final-words">Final Words</a></li>
                 </ul>
@@ -248,171 +263,234 @@
 
         <div class="card" id="what-is-nas">
             <h2>What is a NAS?</h2>
-            
-            <p><strong>NAS stands for Network Attached Storage.</strong> It is simply a set of hard drives which your computer can access via the internet, rather than locally (such as your C: or D: drives). It comes with some benefits, mainly that multiple computers can all access the same set of drives stored in the NAS. Furthermore, NAS systems are standard equipment for storing and backing up large amounts of data "locally" (as opposed to cloud storage, such as Amazon Glacier), and allow fast and instant access to data.</p>
+
+            <p><strong>NAS stands for Network Attached Storage.</strong> It is simply a set of hard drives which your
+                computer can access via the internet, rather than locally (such as your C: or D: drives). It comes with
+                some benefits, mainly that multiple computers can all access the same set of drives stored in the NAS.
+                Furthermore, NAS systems are standard equipment for storing and backing up large amounts of data
+                "locally" (as opposed to cloud storage, such as Amazon Glacier), and allow fast and instant access to
+                data.</p>
 
             <h3>Purpose in Our Lab</h3>
-            
-            <p>In our lab, the main purpose of our NAS is to provide a reliable, redundant backup of our data (both Raw and Processed), which prevents loss of data in the event of local hard drive failure. The NAS has several failsafe systems which prevent data loss, even in the event of power outage or disk corruption. Furthermore, our NAS is secondarily backed up in its entirety to a remote NAS maintained by LSCG, providing yet another method of backup.</p>
+
+            <p>In our lab, the main purpose of our NAS is to provide a reliable, redundant backup of our data (both Raw
+                and Processed), which prevents loss of data in the event of local hard drive failure. The NAS has
+                several failsafe systems which prevent data loss, even in the event of power outage or disk corruption.
+                Furthermore, our NAS is secondarily backed up in its entirety to a remote NAS maintained by LSCG,
+                providing yet another method of backup.</p>
 
             <div class="warning-box">
-                <strong>⚠️ Critical Reminder:</strong> A NAS is only useful if you decide to use it. If your data is on your local drives, and your local drives only, and a drive failure occurs, your data is <strong>LOST PERMANENTLY</strong>. It is highly unlikely that it will be recoverable.
+                <strong>⚠️ Critical Reminder:</strong> A NAS is only useful if you decide to use it. If your data is on
+                your local drives, and your local drives only, and a drive failure occurs, your data is <strong>LOST
+                    PERMANENTLY</strong>. It is highly unlikely that it will be recoverable.
             </div>
 
             <div class="success-box">
-                Because of this, we've set up the NAS in a way that makes it easy to keep your data safe on the NAS, while also being able to access your data in a speedy and efficient way.
+                Because of this, we've set up the NAS in a way that makes it easy to keep your data safe on the NAS,
+                while also being able to access your data in a speedy and efficient way.
             </div>
         </div>
 
         <div class="card" id="flowchart">
             <h2>NAS Flowchart</h2>
-            
-            <div class="flowchart-note">
-                <strong>📊 Note:</strong> The original document contains a visual flowchart. Below are the detailed explanations of each step in the backup workflow.
-            </div>
+
+            <img src="NAS-flowchart.jpg" alt="NAS Flowchart" class="flowchart-image">
 
             <h3>Automated Backup Process</h3>
 
             <div class="step">
                 <span class="step-number">1</span>
                 <strong>Nightly Backup from Acquisition Computers</strong>
-                <p>At this step, each of the primary acquisition computers is backed up on a nightly basis (22:00, every night) onto its corresponding temporary folder on the NAS. This is done via the program <strong>Syncback Free</strong> (<a href="https://www.2brightsparks.com/freeware/freeware-hub.html" target="_blank">2brightsparks</a>).</p>
+                <p>At this step, each of the primary acquisition computers is backed up on a nightly basis (22:00, every
+                    night) onto its corresponding temporary folder on the NAS. This is done via the program
+                    <strong>Syncback Free</strong> (<a href="https://www.2brightsparks.com/freeware/freeware-hub.html"
+                        target="_blank">2brightsparks</a>).
+                </p>
                 <ul>
-                    <li>Syncback Free backs up data only at the specified time, so that it does not consume system resources while other things are happening (such as imaging)</li>
-                    <li><strong>2P Acquisition Computer:</strong> Only the E and F drives are backed up</li>
-                    <li><strong>Electrophysiology and Widefield Computer:</strong> The entirety of the data drive is backed up</li>
+                    <li><strong>2P Acquisition Computer:</strong> Only the E and F drives are backed up. Once the data
+                        is backed up is good practive to delete it from the local drive.</li>
+                    <li><strong>Widefield Computer:</strong> The entirety of the data drive is
+                        backed up</li>
+                    <li><strong>Mini-2p Acquisition Computer:</strong> Currently not backed up, files have to be manually 
+                        backed up to the NAS.</li>
                 </ul>
             </div>
 
+
             <div class="step">
                 <span class="step-number">2</span>
-                <strong>Immediate Backup (2P Acquisition Only)</strong>
-                <p>For the 2P Acquisition, there is a folder on the G: drive called <code>IMMEDIATE BACKUP</code>. If you need your data on the NAS immediately (typically for immediate transfer to your personal computer for analysis):</p>
-                <ol>
-                    <li>Copy your data from the appropriate drive (E: or F:) to this folder on the G: drive</li>
-                    <li>Run the appropriate Syncback Free profile to back up the data onto <code>Goard_Lab/Immediate Backup</code></li>
-                </ol>
-                
-                <div class="info-box">
-                    <strong>Important Difference:</strong> This is more correctly classified as a "mirror" rather than a backup. It copies files from the source to the destination. However, if it scans a file on the destination drive that is not present on the source drive, it will delete it.
-                    <br><br>
-                    <strong>Action Required:</strong> After you've retrieved your data from the Immediate Backup folder, delete the data from <code>2P Acquisition/G:/Immediate Backup</code>, and it will be automatically deleted from the NAS as well.
-                </div>
+                <strong>Archive Migration</strong>
+                <p>At this step, all the files in the temporary folders are moved to their permanent archive folder on
+                    the NAS on a nightly basis (03:00, every night). This is done via a script found in the Task
+                    Scheduler on the NAS, which moves the files found in each temporary folder into its archive folder,
+                    then deletes the copy remaining on the temporary folder. This is to prevent out of memory errors
+                    from Syncback Free.</p>
+                    <div class="warning-box">
+                        <strong>Currently disabled:</strong> Files stay at their temporary location (we will implement this 
+                        step in the future)
+                    </div>
             </div>
 
             <div class="step">
                 <span class="step-number">3</span>
-                <strong>Archive Migration</strong>
-                <p>At this step, all the files in the temporary folders are moved to their permanent archive folder on the NAS on a nightly basis (03:00, every night). This is done via a script found in the Task Scheduler on the NAS, which moves the files found in each temporary folder into its archive folder, then deletes the copy remaining on the temporary folder. This is to prevent out of memory errors from Syncback Free.</p>
-            </div>
-
-            <div class="step">
-                <span class="step-number">4</span>
-                <strong>Personal NAS Folder - Real-Time Sync</strong>
-                <p>Data from your NAS folder is synced in real time to the NAS via <strong>Synology Cloud Drive</strong> (<a href="https://global.download.synology.com/download/Tools/CloudStationDrive/4.2.4-4393/Windows/Installer/Synology%20Cloud%20Station%20Drive-4.2.4-4393.exe" target="_blank">Download Link</a>).</p>
+                <strong>Migration to your personal drive</strong>
+                <p>In order to process raw data, you must <strong>copy</strong> it to your personal drive manually. 
+                    </p>
                 <ul>
-                    <li>Any changes you make to your folder (data removal, addition, or modification) is updated in real time</li>
-                    <li>This is the safest "temporary" storage location of data you are processing</li>
-                    <li>In the event of local disk failure, any data you have stored in your NAS folder will be safe on the NAS</li>
+                    <li>In Raw Data Archives Folder, there should only be the single tiffs for any given recording</li>
+                    <li>It is recommended to have a temporary folder in your drive, so that once you are finished processing,
+                        you can remove the raw data from your personal drive.
+                    </li>
+                    <div class="warning-box">
+                        <strong>There must be no duplicates of the same recording anywhere in the NAS</strong>
+                    </div>
                 </ul>
             </div>
 
             <div class="step">
-                <span class="step-number">5</span>
-                <strong>Recycle Bin</strong>
-                <p>Any data removed from your NAS folder is moved into a general NAS recycle bin (shared between all private NAS folders).</p>
-                <div class="warning-box">
-                    Files older than 30 days are automatically deleted and are then unrecoverable.
+                <span class="step-number">4</span>
+                <strong>Processed Data Sync</strong>
+                <p>It is strongly recommended to sync your processed data to the NAS regularly. This can be done via 
+                    the program <strong>Synology Cloud Drive</strong> or by using the command line.</p>
+                    <ul></ul>
+                    <li>Processed data can encompass anywhere from suite2p outputs, .mat files, figures, etc.</li>
+                    <li>Processed data shouldn't be larger than a few gigabytes. If your processed data is as large 
+                        as the raw data, you might have duplicates (like .bin outputs from suite2p)
+                    </li>
+                    <li> It is also recommended to sync your code directories to the NAS and to Github</li>
+                    <div class="warning-box">
+                        <strong>It is not advised to work with data on the NAS:</strong> The NAS folder is continuously backed up to the NAS. With MATLAB or other
+                        programs processing the data on the NAS, it severely reduces the lifespan of our NAS drives via the
+                        inflated number of read/writes.
+                    </div>
                 </div>
             </div>
 
             <div class="step">
-                <span class="step-number">6</span>
-                <strong>Processing Best Practice</strong>
-                <p>Before processing data, it is advisable to move the data from your NAS folder onto your local drives. Although this reduces the security of your data, the amount of data loss will be minimal, assuming that you correctly update your NAS folder incrementally with each step of processing.</p>
-                <div class="info-box">
-                    <strong>Reason:</strong> The NAS folder is continuously backed up to the NAS. With MATLAB or other programs processing the data on the NAS, it severely reduces the lifespan of our NAS drives via the inflated number of read/writes.
-                </div>
+                <span class="step-number">5</span>
+                <strong>Publication Grade Data</strong>
+                <p>When you are finished with your project and it is ready for publication, the entire raw data has to be transferred
+                    from Raw Data Archives Folder to the Raw Data Archives/publications directory. The same process has to be done
+                    for the processed data.
+                </p>
+                <li>Raw data has to be kept for at least 5 years after publication</li>
+                <li>It is advised to keep a log of the exact sessions and recordings used for the publication so that 
+                    you can easily find the data to move it to the publications directory.
+                </li>
+                
             </div>
         </div>
 
         <div class="card" id="typical-workflow">
             <h2>Example Typical Data Flow</h2>
-            
+
             <p>Follow these steps for a standard data processing workflow:</p>
 
             <div class="step">
                 <span class="step-number">1</span>
                 <strong>Recording Complete</strong>
-                <p>Finish recording on the computer. If you can wait until tomorrow to process your data, let the backup run overnight.</p>
-                <p><strong>If you need the data immediately:</strong> You can manually begin the backup process:</p>
-                <ul>
-                    <li>Open Syncback Free</li>
-                    <li>Right click the task you want to back up</li>
-                    <li>Click on "Run Unattended"</li>
+                <p>Finish recording on the computer. If you can wait until tomorrow to process your data, let the backup
+                    run overnight.</p>
+                    <ul></ul>
+                <p><strong>If you need the data immediately:</strong> You can manually copy your data to the appropiate 
+                    Raw Data Temporary Folder, so that you can cobegin the backup process:</p>
                 </ul>
-                <p><strong>For 2P:</strong> Drag your data to <code>G:/IMMEDIATE BACKUP</code> first, then run the corresponding profile to back up that folder directly.</p>
-                <p><strong>For Widefield and Electrophysiology:</strong> Back up the entire data drive immediately.</p>
+                
             </div>
 
             <div class="step">
                 <span class="step-number">2</span>
                 <strong>Retrieve Data</strong>
-                <p>When you're ready to process your data, <strong>copy</strong> (not move) the data from the appropriate NAS drive onto your personal NAS folder on your computer (each computer has the Raw Data Archives mapped as a network drive).</p>
+                <p>When you're ready to process your data, <strong>copy</strong> (not move) the data from the
+                    appropriate NAS drive onto your personal data drive</p>
             </div>
 
             <div class="step">
                 <span class="step-number">3</span>
-                <strong>Prepare for Processing</strong>
-                <p>Move the data off your NAS folder and onto a local drive folder on your own computer in preparation for processing.</p>
+                <strong>Process</strong>
+                <p>Process the data as necessary in your local drive.</p>
             </div>
 
             <div class="step">
                 <span class="step-number">4</span>
-                <strong>Process</strong>
-                <p>Process the data as necessary.</p>
+                <strong>Backup Processed Data</strong>
+                <p>Make sure to sync your processed data to the NAS regularly. </p>
             </div>
 
             <div class="step">
                 <span class="step-number">5</span>
-                <strong>Backup Processed Data</strong>
-                <p>Move the data back from your local drive folder onto the NAS to ensure that it is safe in case of drive failure.</p>
+                <strong>Continue or Finalize</strong>
+                <p>If you are not yet finished processing, or expect further processing, leave your data in your NAS
+                    folder and repeat steps 3–4 as necessary. When you are done processing your data and it is publication
+                    grade, proceed to step 5.
+                </p>
             </div>
 
             <div class="step">
                 <span class="step-number">6</span>
-                <strong>Continue or Finalize</strong>
-                <p>If you are not yet finished processing, or expect further processing, leave your data in your NAS folder and repeat steps 3–5 as necessary. When you are done processing your data, proceed to step 7.</p>
-            </div>
-
-            <div class="step">
-                <span class="step-number">7</span>
                 <strong>Archive</strong>
-                <p>If you are finished with all data processing, move the data from your NAS folder onto <strong>Processed Data Archives</strong> for safe keeping, and to reduce the amount of space the data takes on your local drives.</p>
+                <p>If you are finished with all data processing, move the data raw data to Raw Data Archives/publications directory 
+                    and the processed data to Processed Data Archives/yourprojectname directory.from your NAS folder onto
+                    <strong>Processed Data Archives</strong> for safe keeping, and to reduce the amount of space the
+                    data takes on your local drives.
+                </p>
             </div>
+        </div>
+
+
+        <div class="card" id="Naming Conventions">
+            <h2>Naming Conventions</h2>
+            <p>When naming your data, it is important to follow the following conventions:</p>
+            <ul>
+                <li>Raw data should be named as <code>YYYYMMDD_XXX_XXX000_recordingID</code></li> 
+                <p><code></code>YYYYMMDD</code> is the data of the recording</p>
+                <p><code></code>XXX</code> is experimenter's initials</p>
+                <p><code></code>YYY000</code> is mouse name</p>
+                <p><code></code>recordingID</code> is the recording ID</p>
+
+            <li>If possible, try to name the single tiffs as your recording name (Bruker software has the option)</code></li>
+            <li>Name your processed data in a similar maner, so that you always can find the raw data easily</li>
+            </ul>
+            <div class="info-box">
+                Try to use descriptive naming conventions for the experiment you are performing
+            </div>
+            <div class="warning-box">
+                <strong>For processed data, bad naming coventions can be: <code>mouse1_experiment10</code></strong>
         </div>
 
         <div class="card" id="faqs">
             <h2>NAS FAQs</h2>
 
             <h3>Personal Folder Specifics</h3>
-            <p>Your personal folder behaves like Dropbox would. It syncs your data between your computer's designated folder to the NAS in real-time. It is yours to keep and maintain, and keeps all the safety benefits of our archived data. It requires the program <strong>Synology Cloud Drive</strong> to be downloaded on your computer.</p>
+            <p>Your personal folder behaves like Dropbox would. It syncs your data between your computer's designated
+                folder to the NAS in real-time. It is yours to keep and maintain, and keeps all the safety benefits of
+                our archived data. It requires the program <strong>Synology Cloud Drive</strong> to be downloaded on
+                your computer.</p>
 
             <h3>How can I save hard disk space on my local computer drives?</h3>
-            <p>Your personal NAS folder is unique as it exists both on the NAS and on your local drive. The NAS-only folders exist only on the NAS. Data stored in these folders do not count towards your storage space locally. Of course, data stored in your local drive do count towards your storage space.</p>
+            <p>Your personal NAS folder is unique as it exists both on the NAS and on your local drive. The NAS-only
+                folders exist only on the NAS. Data stored in these folders do not count towards your storage space
+                locally. Of course, data stored in your local drive do count towards your storage space.</p>
             <div class="success-box">
-                <strong>Tip:</strong> To help keep your storage space manageable, curate your NAS folder accordingly. Delete data which you no longer need, or move it to the Processed Data Archives if you anticipate it will be useful in the future.
+                <strong>Tip:</strong> To help keep your storage space manageable, curate your NAS folder accordingly.
+                Delete data which you no longer need, or move it to the Processed Data Archives if you anticipate it
+                will be useful in the future.
             </div>
 
             <h3>Can I access other people's personal NAS folders?</h3>
-            <p>Yes, you can. The Goard Lab folder has been mapped onto each computer, which allows you access to each person's personal folder on the NAS. This is set up to allow for easy sharing between people (say if they're working on the same project).</p>
+            <p>Yes, you can. The Goard Lab folder has been mapped onto each computer, which allows you access to each
+                person's personal folder on the NAS. This is set up to allow for easy sharing between people (say if
+                they're working on the same project).</p>
             <div class="warning-box">
-                <strong>⚠️ Please be mindful:</strong> Do not alter in any way data on other people's NAS folders without their express permission.
+                <strong>⚠️ Please be mindful:</strong> Do not alter in any way data on other people's NAS folders
+                without their express permission.
             </div>
 
             <h3>Uh oh, I accidentally deleted something on my NAS folder and I need to get it back...</h3>
             <p><strong>Method 1: Recycle Bin</strong></p>
-            <p>Access the Goard Lab mapped folder on your computer. You will see a folder named <code>#recycle</code> which is further subdivided into each of our personal folders. You can recover lost or deleted files from here, granted that they are less than 30 days old.</p>
+            <p>Access the Goard Lab mapped folder on your computer. You will see a folder named <code>#recycle</code>
+                which is further subdivided into each of our personal folders. You can recover lost or deleted files
+                from here, granted that they are less than 30 days old.</p>
             <div class="warning-box">
                 Files in the recycle bin for longer than 30 days are automatically deleted and are unrecoverable.
             </div>
@@ -427,24 +505,33 @@
 
             <h3>Additional Tips</h3>
             <ul>
-                <li><strong>Your Responsibility:</strong> It is your responsibility to ensure that your data is safely on the NAS. If any problems arrive, feel free to let Kevin know.</li>
-                <li><strong>Keep the NAS Clean:</strong> It is also your responsibility to keep the NAS clean. Do not leave large amounts of junk data on the NAS, especially those large multi-page .tif files. If you processed the recordings and don't expect to ever use them again, remove the raw data on the NAS to ensure sufficient storage space for all lab members.</li>
+                <li><strong>Your Responsibility:</strong> It is your responsibility to ensure that your data is safely
+                    on the NAS. If any problems arrive, feel free to let Kevin know.</li>
+                <li><strong>Keep the NAS Clean:</strong> It is also your responsibility to keep the NAS clean. Do not
+                    leave large amounts of junk data on the NAS, especially those large multi-page .tif files. If you
+                    processed the recordings and don't expect to ever use them again, remove the raw data on the NAS to
+                    ensure sufficient storage space for all lab members.</li>
             </ul>
         </div>
 
         <div class="card" id="final-words">
             <h2>Final Words</h2>
-            
-            <p>As stated in the intro, the NAS is a powerful system which allows a nearly guaranteed safety of data, with multiple simultaneous failures of multiple systems in multiple locations required to cause complete loss of data.</p>
+
+            <p>As stated in the intro, the NAS is a powerful system which allows a nearly guaranteed safety of data,
+                with multiple simultaneous failures of multiple systems in multiple locations required to cause complete
+                loss of data.</p>
 
             <div class="warning-box">
-                <strong>However,</strong> it is worth reiterating that a NAS is only a tool that must be used correctly. Incorrect use or cutting corners may lead to your data being less secure than you'd want.
+                <strong>However,</strong> it is worth reiterating that a NAS is only a tool that must be used correctly.
+                Incorrect use or cutting corners may lead to your data being less secure than you'd want.
             </div>
 
             <p>Please read through this document carefully, and send any questions to Kevin.</p>
 
             <div class="info-box">
-                <strong>Note:</strong> This SOP is not meant for discussing the methods in setting up and maintaining a NAS-based backup, only for its use. If you need to do anything more than just using the NAS, ask Kevin for further directions.
+                <strong>Note:</strong> This SOP is not meant for discussing the methods in setting up and maintaining a
+                NAS-based backup, only for its use. If you need to do anything more than just using the NAS, ask Santi
+                for further directions.
             </div>
         </div>
     </div>
@@ -454,4 +541,5 @@
         <p>For questions or issues, contact Kevin</p>
     </div>
 </body>
+
 </html>
