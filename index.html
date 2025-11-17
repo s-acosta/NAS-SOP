@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAS SOP - Goard Lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .card h2:first-child {
+            margin-top: 0;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .metadata {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .flowchart-note {
+            background: #fff9c4;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border: 1px solid #fbc02d;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>NAS Standard Operating Procedure</h1>
+            <p class="subtitle">Goard Lab Network Attached Storage Guidelines</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="metadata">
+                <strong>Written:</strong> June 21, 2017 by KS<br>
+                <strong>Last Updated:</strong> November 2025
+            </div>
+
+            <div class="info-box">
+                <strong>Purpose:</strong> To provide a general understanding of the NAS backup system we use in the Goard Lab.
+            </div>
+
+            <div class="toc">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#what-is-nas">What is a NAS?</a></li>
+                    <li><a href="#flowchart">NAS Flowchart</a></li>
+                    <li><a href="#typical-workflow">Example Typical Data Flow</a></li>
+                    <li><a href="#faqs">NAS FAQs</a></li>
+                    <li><a href="#final-words">Final Words</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" id="what-is-nas">
+            <h2>What is a NAS?</h2>
+            
+            <p><strong>NAS stands for Network Attached Storage.</strong> It is simply a set of hard drives which your computer can access via the internet, rather than locally (such as your C: or D: drives). It comes with some benefits, mainly that multiple computers can all access the same set of drives stored in the NAS. Furthermore, NAS systems are standard equipment for storing and backing up large amounts of data "locally" (as opposed to cloud storage, such as Amazon Glacier), and allow fast and instant access to data.</p>
+
+            <h3>Purpose in Our Lab</h3>
+            
+            <p>In our lab, the main purpose of our NAS is to provide a reliable, redundant backup of our data (both Raw and Processed), which prevents loss of data in the event of local hard drive failure. The NAS has several failsafe systems which prevent data loss, even in the event of power outage or disk corruption. Furthermore, our NAS is secondarily backed up in its entirety to a remote NAS maintained by LSCG, providing yet another method of backup.</p>
+
+            <div class="warning-box">
+                <strong>⚠️ Critical Reminder:</strong> A NAS is only useful if you decide to use it. If your data is on your local drives, and your local drives only, and a drive failure occurs, your data is <strong>LOST PERMANENTLY</strong>. It is highly unlikely that it will be recoverable.
+            </div>
+
+            <div class="success-box">
+                Because of this, we've set up the NAS in a way that makes it easy to keep your data safe on the NAS, while also being able to access your data in a speedy and efficient way.
+            </div>
+        </div>
+
+        <div class="card" id="flowchart">
+            <h2>NAS Flowchart</h2>
+            
+            <div class="flowchart-note">
+                <strong>📊 Note:</strong> The original document contains a visual flowchart. Below are the detailed explanations of each step in the backup workflow.
+            </div>
+
+            <h3>Automated Backup Process</h3>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Nightly Backup from Acquisition Computers</strong>
+                <p>At this step, each of the primary acquisition computers is backed up on a nightly basis (22:00, every night) onto its corresponding temporary folder on the NAS. This is done via the program <strong>Syncback Free</strong> (<a href="https://www.2brightsparks.com/freeware/freeware-hub.html" target="_blank">2brightsparks</a>).</p>
+                <ul>
+                    <li>Syncback Free backs up data only at the specified time, so that it does not consume system resources while other things are happening (such as imaging)</li>
+                    <li><strong>2P Acquisition Computer:</strong> Only the E and F drives are backed up</li>
+                    <li><strong>Electrophysiology and Widefield Computer:</strong> The entirety of the data drive is backed up</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Immediate Backup (2P Acquisition Only)</strong>
+                <p>For the 2P Acquisition, there is a folder on the G: drive called <code>IMMEDIATE BACKUP</code>. If you need your data on the NAS immediately (typically for immediate transfer to your personal computer for analysis):</p>
+                <ol>
+                    <li>Copy your data from the appropriate drive (E: or F:) to this folder on the G: drive</li>
+                    <li>Run the appropriate Syncback Free profile to back up the data onto <code>Goard_Lab/Immediate Backup</code></li>
+                </ol>
+                
+                <div class="info-box">
+                    <strong>Important Difference:</strong> This is more correctly classified as a "mirror" rather than a backup. It copies files from the source to the destination. However, if it scans a file on the destination drive that is not present on the source drive, it will delete it.
+                    <br><br>
+                    <strong>Action Required:</strong> After you've retrieved your data from the Immediate Backup folder, delete the data from <code>2P Acquisition/G:/Immediate Backup</code>, and it will be automatically deleted from the NAS as well.
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Archive Migration</strong>
+                <p>At this step, all the files in the temporary folders are moved to their permanent archive folder on the NAS on a nightly basis (03:00, every night). This is done via a script found in the Task Scheduler on the NAS, which moves the files found in each temporary folder into its archive folder, then deletes the copy remaining on the temporary folder. This is to prevent out of memory errors from Syncback Free.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Personal NAS Folder - Real-Time Sync</strong>
+                <p>Data from your NAS folder is synced in real time to the NAS via <strong>Synology Cloud Drive</strong> (<a href="https://global.download.synology.com/download/Tools/CloudStationDrive/4.2.4-4393/Windows/Installer/Synology%20Cloud%20Station%20Drive-4.2.4-4393.exe" target="_blank">Download Link</a>).</p>
+                <ul>
+                    <li>Any changes you make to your folder (data removal, addition, or modification) is updated in real time</li>
+                    <li>This is the safest "temporary" storage location of data you are processing</li>
+                    <li>In the event of local disk failure, any data you have stored in your NAS folder will be safe on the NAS</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Recycle Bin</strong>
+                <p>Any data removed from your NAS folder is moved into a general NAS recycle bin (shared between all private NAS folders).</p>
+                <div class="warning-box">
+                    Files older than 30 days are automatically deleted and are then unrecoverable.
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">6</span>
+                <strong>Processing Best Practice</strong>
+                <p>Before processing data, it is advisable to move the data from your NAS folder onto your local drives. Although this reduces the security of your data, the amount of data loss will be minimal, assuming that you correctly update your NAS folder incrementally with each step of processing.</p>
+                <div class="info-box">
+                    <strong>Reason:</strong> The NAS folder is continuously backed up to the NAS. With MATLAB or other programs processing the data on the NAS, it severely reduces the lifespan of our NAS drives via the inflated number of read/writes.
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="typical-workflow">
+            <h2>Example Typical Data Flow</h2>
+            
+            <p>Follow these steps for a standard data processing workflow:</p>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Recording Complete</strong>
+                <p>Finish recording on the computer. If you can wait until tomorrow to process your data, let the backup run overnight.</p>
+                <p><strong>If you need the data immediately:</strong> You can manually begin the backup process:</p>
+                <ul>
+                    <li>Open Syncback Free</li>
+                    <li>Right click the task you want to back up</li>
+                    <li>Click on "Run Unattended"</li>
+                </ul>
+                <p><strong>For 2P:</strong> Drag your data to <code>G:/IMMEDIATE BACKUP</code> first, then run the corresponding profile to back up that folder directly.</p>
+                <p><strong>For Widefield and Electrophysiology:</strong> Back up the entire data drive immediately.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Retrieve Data</strong>
+                <p>When you're ready to process your data, <strong>copy</strong> (not move) the data from the appropriate NAS drive onto your personal NAS folder on your computer (each computer has the Raw Data Archives mapped as a network drive).</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Prepare for Processing</strong>
+                <p>Move the data off your NAS folder and onto a local drive folder on your own computer in preparation for processing.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Process</strong>
+                <p>Process the data as necessary.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Backup Processed Data</strong>
+                <p>Move the data back from your local drive folder onto the NAS to ensure that it is safe in case of drive failure.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">6</span>
+                <strong>Continue or Finalize</strong>
+                <p>If you are not yet finished processing, or expect further processing, leave your data in your NAS folder and repeat steps 3–5 as necessary. When you are done processing your data, proceed to step 7.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">7</span>
+                <strong>Archive</strong>
+                <p>If you are finished with all data processing, move the data from your NAS folder onto <strong>Processed Data Archives</strong> for safe keeping, and to reduce the amount of space the data takes on your local drives.</p>
+            </div>
+        </div>
+
+        <div class="card" id="faqs">
+            <h2>NAS FAQs</h2>
+
+            <h3>Personal Folder Specifics</h3>
+            <p>Your personal folder behaves like Dropbox would. It syncs your data between your computer's designated folder to the NAS in real-time. It is yours to keep and maintain, and keeps all the safety benefits of our archived data. It requires the program <strong>Synology Cloud Drive</strong> to be downloaded on your computer.</p>
+
+            <h3>How can I save hard disk space on my local computer drives?</h3>
+            <p>Your personal NAS folder is unique as it exists both on the NAS and on your local drive. The NAS-only folders exist only on the NAS. Data stored in these folders do not count towards your storage space locally. Of course, data stored in your local drive do count towards your storage space.</p>
+            <div class="success-box">
+                <strong>Tip:</strong> To help keep your storage space manageable, curate your NAS folder accordingly. Delete data which you no longer need, or move it to the Processed Data Archives if you anticipate it will be useful in the future.
+            </div>
+
+            <h3>Can I access other people's personal NAS folders?</h3>
+            <p>Yes, you can. The Goard Lab folder has been mapped onto each computer, which allows you access to each person's personal folder on the NAS. This is set up to allow for easy sharing between people (say if they're working on the same project).</p>
+            <div class="warning-box">
+                <strong>⚠️ Please be mindful:</strong> Do not alter in any way data on other people's NAS folders without their express permission.
+            </div>
+
+            <h3>Uh oh, I accidentally deleted something on my NAS folder and I need to get it back...</h3>
+            <p><strong>Method 1: Recycle Bin</strong></p>
+            <p>Access the Goard Lab mapped folder on your computer. You will see a folder named <code>#recycle</code> which is further subdivided into each of our personal folders. You can recover lost or deleted files from here, granted that they are less than 30 days old.</p>
+            <div class="warning-box">
+                Files in the recycle bin for longer than 30 days are automatically deleted and are unrecoverable.
+            </div>
+
+            <p><strong>Method 2: Previous Versions</strong></p>
+            <p>You can recover previous versions of some types of files:</p>
+            <ol>
+                <li>Right click on the file in your NAS folder</li>
+                <li>Hover over "Synology Cloud Station Drive"</li>
+                <li>Select "browse previous versions" to go through older versions of your data for recovery</li>
+            </ol>
+
+            <h3>Additional Tips</h3>
+            <ul>
+                <li><strong>Your Responsibility:</strong> It is your responsibility to ensure that your data is safely on the NAS. If any problems arrive, feel free to let Kevin know.</li>
+                <li><strong>Keep the NAS Clean:</strong> It is also your responsibility to keep the NAS clean. Do not leave large amounts of junk data on the NAS, especially those large multi-page .tif files. If you processed the recordings and don't expect to ever use them again, remove the raw data on the NAS to ensure sufficient storage space for all lab members.</li>
+            </ul>
+        </div>
+
+        <div class="card" id="final-words">
+            <h2>Final Words</h2>
+            
+            <p>As stated in the intro, the NAS is a powerful system which allows a nearly guaranteed safety of data, with multiple simultaneous failures of multiple systems in multiple locations required to cause complete loss of data.</p>
+
+            <div class="warning-box">
+                <strong>However,</strong> it is worth reiterating that a NAS is only a tool that must be used correctly. Incorrect use or cutting corners may lead to your data being less secure than you'd want.
+            </div>
+
+            <p>Please read through this document carefully, and send any questions to Kevin.</p>
+
+            <div class="info-box">
+                <strong>Note:</strong> This SOP is not meant for discussing the methods in setting up and maintaining a NAS-based backup, only for its use. If you need to do anything more than just using the NAS, ask Kevin for further directions.
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Goard Lab | Network Attached Storage SOP</p>
+        <p>For questions or issues, contact Kevin</p>
+    </div>
+</body>
+</html>
