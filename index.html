@@ -316,7 +316,6 @@
                 </ul>
             </div>
 
-
             <div class="step">
                 <span class="step-number">2</span>
                 <strong>Archive Migration</strong>
@@ -325,26 +324,26 @@
                     Scheduler on the NAS, which moves the files found in each temporary folder into its archive folder,
                     then deletes the copy remaining on the temporary folder. This is to prevent out of memory errors
                     from Syncback Free.</p>
-                    <div class="warning-box">
-                        <strong>Currently disabled:</strong> Files stay at their temporary location (we will implement this 
-                        step in the future)
-                    </div>
+                <div class="warning-box">
+                    <strong>Currently disabled:</strong> Files stay at their temporary location (we will implement this 
+                    step in the future)
+                </div>
             </div>
 
             <div class="step">
                 <span class="step-number">3</span>
                 <strong>Migration to your personal drive</strong>
                 <p>In order to process raw data, you must <strong>copy</strong> it to your personal drive manually. 
-                    </p>
+                </p>
                 <ul>
                     <li>In Raw Data Archives Folder, there should only be the single tiffs for any given recording</li>
                     <li>It is recommended to have a temporary folder in your drive, so that once you are finished processing,
                         you can remove the raw data from your personal drive.
                     </li>
-                    <div class="warning-box">
-                        <strong>There must be no duplicates of the same recording anywhere in the NAS</strong>
-                    </div>
                 </ul>
+                <div class="warning-box">
+                    <strong>There must be no duplicates of the same recording anywhere in the NAS</strong>
+                </div>
             </div>
 
             <div class="step">
@@ -365,7 +364,6 @@
                     inflated number of read/writes.
                 </div>
             </div>
-           
 
             <div class="step">
                 <span class="step-number">5</span>
@@ -382,7 +380,6 @@
                 </ul>
             </div>
         </div>
-    </div>
 
         <div class="card" id="typical-workflow">
             <h2>Example Typical Data Flow</h2>
@@ -394,11 +391,8 @@
                 <strong>Recording Complete</strong>
                 <p>Finish recording on the computer. If you can wait until tomorrow to process your data, let the backup
                     run overnight.</p>
-                    <ul></ul>
                 <p><strong>If you need the data immediately:</strong> You can manually copy your data to the appropiate 
                     Raw Data Temporary Folder, so that you can cobegin the backup process:</p>
-                </ul>
-                
             </div>
 
             <div class="step">
@@ -440,25 +434,24 @@
             </div>
         </div>
 
-
         <div class="card" id="Naming Conventions">
             <h2>Naming Conventions</h2>
             <p>When naming your data, it is important to follow the following conventions:</p>
             <ul>
                 <li>Raw data should be named as <code>YYYYMMDD_XXX_XXX000_recordingID</code></li> 
-                <p><code></code>YYYYMMDD</code> is the data of the recording</p>
-                <p><code></code>XXX</code> is experimenter's initials</p>
-                <p><code></code>YYY000</code> is mouse name</p>
-                <p><code></code>recordingID</code> is the recording ID</p>
-
-            <li>If possible, try to name the single tiffs as your recording name (Bruker software has the option)</code></li>
-            <li>Name your processed data in a similar maner, so that you always can find the raw data easily</li>
+                <p><code>YYYYMMDD</code> is the data of the recording</p>
+                <p><code>XXX</code> is experimenter's initials</p>
+                <p><code>YYY000</code> is mouse name</p>
+                <p><code>recordingID</code> is the recording ID</p>
+                <li>If possible, try to name the single tiffs as your recording name (Bruker software has the option)</li>
+                <li>Name your processed data in a similar maner, so that you always can find the raw data easily</li>
             </ul>
             <div class="info-box">
                 Try to use descriptive naming conventions for the experiment you are performing
             </div>
             <div class="warning-box">
                 <strong>For processed data, bad naming coventions can be: <code>mouse1_experiment10</code></strong>
+            </div>
         </div>
 
         <div class="card" id="faqs">
@@ -541,7 +534,7 @@
 
     <div class="footer">
         <p>Goard Lab | Network Attached Storage SOP</p>
-        <p>For questions or issues, contact Kevin</p>
+        <p>For questions or issues, contact Santi</p>
     </div>
 </body>
 
